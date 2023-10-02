@@ -158,7 +158,7 @@ for element in elements:
     print(floorwise_sum, '\n')
     print('Total material quantities for', element, 'elements:')
     print('Volume: ', round(total_volume,2), 'm3')
-    print('Area: ', round(total_area,2), 'm2')
+    print('Surface area: ', round(total_area,2), 'm2')
     
 # To access the full DataFrame of an element:
     # element_summary[0] - Columns
