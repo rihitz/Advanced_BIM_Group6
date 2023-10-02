@@ -102,16 +102,6 @@ def quantityTakeOff(element):
                                         if quantity.Name == 'NetVolume':
                                             element_properties['Volume, m3'] = quantity.VolumeValue
     
-                    for definition in definitions:
-                        # Check if the relationship is of type 'IfcRelAssociatesMaterial'
-                        if definition.is_a('IfcRelAssociatesMaterial'):
-                            # This relationship associates materials with the element
-                            # Iterate through related materials
-                            for related_material in definition.RelatedObjects:
-                                if related_material.is_a('IfcMaterial'):
-                                    # Extract material name and add it to the list
-                                    element_properties['Material'] = related_material.Name
-    
                     # Append the data as a new row to the pandas DataFrame
                     df = pd.concat([df, pd.DataFrame([element_properties], columns=columns)], ignore_index=True)
                     
