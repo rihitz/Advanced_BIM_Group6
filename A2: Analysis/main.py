@@ -37,88 +37,90 @@ def quantityTakeOff(element):
     columns = ['Floor', 'Volume, m3', 'Area, m2', 'Material']
     df = pd.DataFrame(columns=columns)
 
-   # Iterate through elements of the specified type
-    for str_element in str_elements:
-        if str_element.IsDefinedBy:
-            definitions = str_element.IsDefinedBy
-
-            is_load_bearing = False  # Initialize the load-bearing flag
-
-            for definition in definitions:
-                # Check if the relationship is of type 'IfcRelDefinesByProperties'
-                if definition.is_a('IfcRelDefinesByProperties'):
-                    property_definition = definition.RelatingPropertyDefinition
-
-                    # Check if the element is load-bearing (assuming 'LoadBearing' property)
-                    if property_definition.is_a('IfcPropertySet'):
-                        for property in property_definition.HasProperties:
-                            if property.Name == 'LoadBearing':
-                                # Check if the property value is True
-                                if property.NominalValue.wrappedValue == True:
-                                    is_load_bearing = True  # Set the flag to True and break
-                                    break  # Exit the property loop once load-bearing is confirmed
-
-            # If the element is load-bearing, proceed to calculate quantities
-            if is_load_bearing:
-                floor_name = str_element.ContainedInStructure[0].RelatingStructure.Name
-                
-                # Create a dictionary to store data for a DataFrame entry
-                element_properties = {
-                    'Floor': floor_name,
-                    'Volume': None,
-                    'Area': None,
-                    'Material': None
-                }
-
+    # Check if the IFC model contains specified structural elements
+    if len(str_elements) != 0:
+       # Iterate through elements of the specified type
+        for str_element in str_elements:
+            if str_element.IsDefinedBy:
+                definitions = str_element.IsDefinedBy
+    
+                is_load_bearing = False  # Initialize the load-bearing flag
+    
                 for definition in definitions:
                     # Check if the relationship is of type 'IfcRelDefinesByProperties'
                     if definition.is_a('IfcRelDefinesByProperties'):
                         property_definition = definition.RelatingPropertyDefinition
-
-                        if property_definition.is_a('IfcElementQuantity'):
-                            for quantity in property_definition.Quantities:
-                                
-                                # Check if the quantity is of type 'IfcQuantityArea'
-                                if quantity.is_a('IfcQuantityArea'):
+    
+                        # Check if the element is load-bearing (assuming 'LoadBearing' property)
+                        if property_definition.is_a('IfcPropertySet'):
+                            for property in property_definition.HasProperties:
+                                if property.Name == 'LoadBearing':
+                                    # Check if the property value is True
+                                    if property.NominalValue.wrappedValue == True:
+                                        is_load_bearing = True  # Set the flag to True and break
+                                        break  # Exit the property loop once load-bearing is confirmed
+    
+                # If the element is load-bearing, proceed to calculate quantities
+                if is_load_bearing:
+                    floor_name = str_element.ContainedInStructure[0].RelatingStructure.Name
+                    
+                    # Create a dictionary to store data for a DataFrame entry
+                    element_properties = {
+                        'Floor': floor_name,
+                        'Volume': None,
+                        'Area': None,
+                        'Material': None
+                    }
+    
+                    for definition in definitions:
+                        # Check if the relationship is of type 'IfcRelDefinesByProperties'
+                        if definition.is_a('IfcRelDefinesByProperties'):
+                            property_definition = definition.RelatingPropertyDefinition
+    
+                            if property_definition.is_a('IfcElementQuantity'):
+                                for quantity in property_definition.Quantities:
                                     
-                                    # Slab area, m2
-                                    if quantity.Name == 'NetArea':
-                                        element_properties['Area, m2'] = quantity.AreaValue
+                                    # Check if the quantity is of type 'IfcQuantityArea'
+                                    if quantity.is_a('IfcQuantityArea'):
                                         
-                                    # Wall surface area, m2
-                                    elif quantity.Name == 'NetSideArea':
-                                        element_properties['Area, m2'] = quantity.AreaValue
+                                        # Slab area, m2
+                                        if quantity.Name == 'NetArea':
+                                            element_properties['Area, m2'] = quantity.AreaValue
+                                            
+                                        # Wall surface area, m2
+                                        elif quantity.Name == 'NetSideArea':
+                                            element_properties['Area, m2'] = quantity.AreaValue
+                                            
+                                        # Beam surface area, m2
+                                        elif quantity.Name == 'NetSurfaceArea':
+                                            element_properties['Area, m2'] = quantity.AreaValue
+                                            
+                                    # Check if the quantity is of type 'IfcQuantityVolume' 
+                                    elif quantity.is_a('IfcQuantityVolume'):
                                         
-                                    # Beam surface area, m2
-                                    elif quantity.Name == 'NetSurfaceArea':
-                                        element_properties['Area, m2'] = quantity.AreaValue
-                                        
-                                # Check if the quantity is of type 'IfcQuantityVolume' 
-                                elif quantity.is_a('IfcQuantityVolume'):
-                                    
-                                    # Element volume, m3
-                                    if quantity.Name == 'NetVolume':
-                                        element_properties['Volume, m3'] = quantity.VolumeValue
-
-                for definition in definitions:
-                    # Check if the relationship is of type 'IfcRelAssociatesMaterial'
-                    if definition.is_a('IfcRelAssociatesMaterial'):
-                        # This relationship associates materials with the element
-                        # Iterate through related materials
-                        for related_material in definition.RelatedObjects:
-                            if related_material.is_a('IfcMaterial'):
-                                # Extract material name and add it to the list
-                                element_properties['Material'] = related_material.Name
-
-                # Append the data as a new row to the pandas DataFrame
-                df = pd.concat([df, pd.DataFrame([element_properties], columns=columns)], ignore_index=True)
-                
-                # Create a floorwise summary:
-                floorwise_sum = df.groupby('Floor')[['Volume, m3', 'Area, m2']].sum()
-                
-                # Calculate total quantities for the specified element type
-                total_volume = df['Volume, m3'].sum()
-                total_area = df['Area, m2'].sum()
+                                        # Element volume, m3
+                                        if quantity.Name == 'NetVolume':
+                                            element_properties['Volume, m3'] = quantity.VolumeValue
+    
+                    for definition in definitions:
+                        # Check if the relationship is of type 'IfcRelAssociatesMaterial'
+                        if definition.is_a('IfcRelAssociatesMaterial'):
+                            # This relationship associates materials with the element
+                            # Iterate through related materials
+                            for related_material in definition.RelatedObjects:
+                                if related_material.is_a('IfcMaterial'):
+                                    # Extract material name and add it to the list
+                                    element_properties['Material'] = related_material.Name
+    
+                    # Append the data as a new row to the pandas DataFrame
+                    df = pd.concat([df, pd.DataFrame([element_properties], columns=columns)], ignore_index=True)
+                    
+                    # Create a floorwise summary:
+                    floorwise_sum = df.groupby('Floor')[['Volume, m3', 'Area, m2']].sum()
+                    
+                    # Calculate total quantities for the specified element type
+                    total_volume = df['Volume, m3'].sum()
+                    total_area = df['Area, m2'].sum()
                 
 
     return df, tot_elements, floorwise_sum, total_volume, total_area, element
