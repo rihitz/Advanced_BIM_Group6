@@ -5,7 +5,11 @@ The main.py script has been built and tested on "LLYN - STRU.ifc", which is the 
 
 For script to run as intended, the following folder hierarchy must be implemented:  
 
-main folder  
-├── main.py  
-├── model  
-│   ├── LLYN - STRU.ifc.ifc  
+- Root
+  - input
+      - rep_template.xlsx
+  - model
+    - LLYN - STRU.ifc.ifc
+  - output
+      - report_LLYN - STRU.xlsx
+  - main.py
