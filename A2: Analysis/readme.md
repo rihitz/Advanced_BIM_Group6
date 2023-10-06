@@ -3,9 +3,9 @@
 To ensure the script runs as intended, please set up the following folder hierarchy (alternatively download the entire *A2: Analysis* folder):
 
     1. Create a 'Root' folder (if it doesn't exist).
-
+    
     2. Inside the 'Root' folder, create the necessary subfolders in the following structure:
-
+    
     Root
         input
             rep_template.xlsx
