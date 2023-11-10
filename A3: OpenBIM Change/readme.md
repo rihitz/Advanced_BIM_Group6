@@ -8,7 +8,7 @@ To ensure the script runs as intended, please set up the following folder hierar
     
     Root
         model
-            LLYN - STRU.ifc.ifc
+            LLYN - STRU.ifc
         output
         main.py
 
