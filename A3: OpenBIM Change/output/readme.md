@@ -1,1 +1,1 @@
-Due to the absence of the SkyLab IFC file in the model folder, the modified IFC file is also not present in the output folder. To observe the changes applied by the tool, please execute the main.py script on the SkyLab IFC file or any other available model.
+Due to the absence of the SkyLab IFC file in the model folder, the modified IFC file is also not uploaded. To observe the changes applied by the tool, please execute the main.py script on the SkyLab IFC file or any other available model.
