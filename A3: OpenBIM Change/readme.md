@@ -21,4 +21,5 @@ The primary use case for this BIM tool is cost estimation, with a specific focus
 This tool can be used by all stakeholders involved in construction projects, especially those interested in the structural aspects. Designers can quickly compare various design concepts in terms of projected expenses, facilitating quick and informed decision making. Contractors, on the other hand, can efficiently estimate material costs for any given project. Furthermore, this tool has the potential to contribute in Life Cycle Assessment analysis.
 
 ## Tool overview:
-[Tool process](https://github.com/rihitz/Advanced_BIM_Group6/blob/main/A3%3A%20OpenBIM%20Change/img/Tool_process.svg)
+<img src="img/Tool_process.svg" width="1000">
+
