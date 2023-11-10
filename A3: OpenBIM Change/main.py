@@ -2,7 +2,6 @@ from pathlib import Path
 import ifcopenshell
 import ifcopenshell.util.element
 import ifcopenshell.api
-import pandas as pd
 
 def loadFile():
     # Specify the name of the IFC model
