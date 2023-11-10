@@ -22,7 +22,7 @@ In its current version, the tool developed for this task operates as an independ
 <img src="img/Tool_process.svg" width="1000">
 
 After successfully executing the script and creating a new PropertySet, which is then added to the IFC model, a new file is saved to the output folder. Upon closer inspection using Blender software, we can confirm the implemented changes, as illustrated in the provided example.
-<img src="img/PropertySet_new.png" width="400">
+<img src="img/PropertySet_new.png" width="300">
 
 While the current tool operates independently, its primary aim was to enhance the functionality of the tool developed in the previous assignment. This improvement would make the original tool more comprehensive, enabling a more thorough and intuitive cost estimation analysis. Presently, due to time constraints, the tool assigns the new PropertySet under the generic name "Pset_MaterialStructural," which does not adhere to ISO 19650 guidelines. To address this, the next steps in the development of this tool should refine the provided script to be more flexible and adapt the PropertySet names according to the provided material type. 
 <img src="img/Tool_process_modified.svg" width="1000">
