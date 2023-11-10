@@ -20,13 +20,13 @@ As a result the primary use case for this joined BIM tool is project cost estima
 It can be used by all stakeholders involved in construction projects, especially those interested in the structural aspects. Designers can quickly compare various design concepts in terms of projected expenses, facilitating quick and informed decision making. Contractors, on the other hand, can efficiently estimate material costs for any given project. Furthermore, this tool has the potential to contribute in Life Cycle Assessment analysis.
 
 ## Process:
-In its current version, the tool developed for this task operates as an independent module, focusing on the creation of a new PropertySet to incorporate and store information about material types and structural parameters of the structural elements. An overall outline of the tool's processes is depicted in the BPMN diagram below:
+In its current version, the tool developed for this task operates as an independent module, focusing on the creation of a new PropertySets to incorporate and store information about material types and structural parameters of the building elements. An overall outline of the tool's processes is depicted in the BPMN diagram below:
 <img src="img/Tool_process.svg" width="1000">
 
-After successfully executing the script and creating a new PropertySet, which is then added to the IFC model, a new file is saved to the output folder. Upon closer inspection using Blender software, we can confirm the implemented changes, as illustrated in the provided example.
+After successfully executing the script and creating a new PropertySet, which is then added to the IFC model, a new file is saved to the output folder. Upon closer inspection using Blender software, we can confirm the implemented changes, as illustrated in the provided example:
 <img src="img/PropertySet_new.png" width="300">
 
-While the current tool operates independently, its primary aim was to enhance the functionality of the tool developed in the previous assignment. This improvement would make the original tool more comprehensive, enabling a more thorough and intuitive cost estimation analysis. Presently, due to time constraints, the tool assigns the new PropertySet under the generic name "Pset_MaterialStructural," which does not adhere to ISO 19650 guidelines. To address this, the next steps in the development of this tool should refine the provided script to be more flexible and adapt the PropertySet names according to the provided material type. 
+While the current tool operates independently, its primary aim was to enhance the functionality of the tool developed in the previous assignment. This improvement would make the original tool more comprehensive, enabling a more thorough and intuitive cost estimation analysis. Presently, due to time and competency constraints, the tool assigns the new PropertySets under the generic name of "Pset_MaterialStructural," which does not adhere to ISO 19650 guidelines. To address this, the next steps in the development of this tool should refine the provided script to be more flexible and adapt the PropertySet names according to the provided material types. 
 <img src="img/Tool_process_modified.svg" width="1000">
 
 ## Information exchanges:
