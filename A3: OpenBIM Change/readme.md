@@ -7,12 +7,11 @@ To ensure the script runs as intended, please set up the following folder hierar
     2. Inside the 'Root' folder, create the necessary subfolders in the following structure:
     
     Root
-        input
-            rep_template.xlsx
+        img
         model
-            LLYN - STRU.ifc.ifc
+            LLYN - STRU.ifc
         output
-            report_LLYN - STRU.xlsx
+            modified_LLYN - STRU.ifc
         main.py
 
 ## Use case:
