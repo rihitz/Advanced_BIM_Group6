@@ -30,7 +30,7 @@ While the current tool operates independently, its primary aim was to enhance th
 <img src="img/Tool_process_modified.svg" width="1000">
 
 ## Information exchanges:
-
+To make sure our tool works correctly and completes the script successfully, we depend on a clearly defined IFC structural model of an appropriate development level. The key requirement is that all structural elements include information about their type and dimensions, enabling accurate quantity take-off. We anticipate no change in the level of detail for the IFC model after using our BIM tool. We assume we're starting with a model corresponding to LOD 300, as per the AIA E202-2008/G202-2013 specification. This means that all quantities, shapes, quotations positions, and orientations are precise. Therefore, adding extra properties commonly found in architectural IFC models doesn't raise the LOD. In addition to a well-defined structural model, it's crucial that construction elements adhere to the ISO 19650 standard. This ensures the script can recognize and iterate through them.
 
 
 
