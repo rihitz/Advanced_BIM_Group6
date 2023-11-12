@@ -1,6 +1,6 @@
 # Assignment 3 - Group 6
 
-To ensure the script runs as intended, please set up the following folder hierarchy (alternatively download the entire *A2: Analysis* folder):
+To ensure the script runs as intended, please set up the following folder hierarchy (alternatively download the entire *A3: OpenBIM Change* folder):
 
     1. Create a 'Root' folder (if it doesn't exist).
     
