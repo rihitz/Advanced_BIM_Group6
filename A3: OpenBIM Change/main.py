@@ -2,6 +2,7 @@ from pathlib import Path
 import ifcopenshell
 import ifcopenshell.util.element
 import ifcopenshell.api
+import sys
 
 def loadFile():
     # Specify the name of the IFC model
@@ -110,7 +111,12 @@ while True:
     else:
         print("\nInvalid choice. Please select a valid option.")
  
-    repeat = input("\nDo you want to repeat the menu? (yes/no): ")
-    if repeat.lower() != "yes":
-        saveFile(model, modelname)
-        break
+    while True:
+        repeat = input("\nDo you want to repeat the script? (yes/no): ")
+        if repeat.lower() == "yes":
+            break  # Break out of the inner loop to repeat the entire script
+        elif repeat.lower() == "no":
+            saveFile(model, modelname)
+            sys.exit()  # Exit the entire script
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
