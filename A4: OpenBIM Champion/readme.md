@@ -13,7 +13,8 @@ It can be used by all stakeholders involved in construction projects, especially
 ## Jupyter Notebooks:
 For a narrated and interactive learning experience, feel free to explore our Juypiter Notebooks, that cover the entire functionality of both tools:
 [Notebook A2:](https://github.com/rihitz/Advanced_BIM_Group6/blob/main/A4%3A%20OpenBIM%20Champion/A2.ipynb)   
-[Notebook A3:](https://github.com/rihitz/Advanced_BIM_Group6/blob/main/A4%3A%20OpenBIM%20Champion/A3.ipynb)  
+[Notebook A3:](https://github.com/rihitz/Advanced_BIM_Group6/blob/main/A4%3A%20OpenBIM%20Champion/A3.ipynb) 
+
 **NOTE:** If you plan to execute the tool on your own machine, ensure proper handling of dependencies by saving and opening the .ipynb file in the tool's dedicated root directory.
 
 
