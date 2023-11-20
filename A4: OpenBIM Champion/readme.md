@@ -1,3 +1,3 @@
 # Assignment 4 - Group 6
 
-[Video](https://dtudk.sharepoint.com/:v:/r/sites/AdvancedBIMGroup6/Delte%20dokumenter/General/tutorial_group6.mp4?csf=1&web=1&e=CoznRX)
+[![](https://img.youtube.com/vi/eOhPl56a9jg/0.jpg)](https://www.youtube.com/watch?v=eOhPl56a9jg)
